@@ -1,0 +1,76 @@
+int leftlineFollower=A0;
+int rightlineFollower=A2;
+int midlineFollower=A1;
+int leftlineFollower_val=2;
+int rightlineFollower_val=2;
+int midlineFollower_val=2;
+int command;
+
+void mappinglinefollower(int x)
+{//more than 512 it is black and less than 512 its white so white =0 black=1
+if(x<512)
+{x=0;}
+if(x>=512)
+{x=1;}
+}
+ 
+void setup() {
+ }
+
+void loop() {
+
+ command = Serial.read();
+ 
+  if (command == '700000') 
+  {
+   leftlineFollower_val=analogRead(leftlineFollower);
+   rightlineFollower_val=analogRead(rightlineFollower);
+   midlineFollower_val=analogRead(midlineFollower);
+   mappinglinefollower(leftlineFollower_val);
+   mappinglinefollower(rightlineFollower_val);
+   mappinglinefollower(midlineFollower_val);
+
+        if( leftlineFollower_val==0&&midlineFollower_val==0&&rightlineFollower_val==0)
+       {
+         //stop0
+       }    
+       if( leftlineFollower_val==0&&midlineFollower_val==0&&rightlineFollower_val==1)
+       {
+            //move forwardright0increase angle of rotationby speed
+       }    
+      
+       if( leftlineFollower_val==0&&midlineFollower_val==1&&rightlineFollower_val==0)
+       {
+        //move forward0
+       }        
+     
+       if( leftlineFollower_val==0&&midlineFollower_val==1&&rightlineFollower_val==1)
+       {
+            //move forwardright0
+
+       }       
+   
+      if( leftlineFollower_val==1&&midlineFollower_val==0&&rightlineFollower_val==0)
+      {
+            //move forwardleft0increase angle of rotation by speed
+
+       } 
+     if( leftlineFollower_val==1&&midlineFollower_val==1&&rightlineFollower_val==0)
+     {
+            //move forwardleft0
+
+     }      
+           
+     if( leftlineFollower_val==1&&midlineFollower_val==1&&rightlineFollower_val==1)
+     {
+             //stop
+
+     }      
+ 
+
+
+
+   
+   }
+
+}
